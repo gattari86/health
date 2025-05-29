@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Health Quiz - Poppy Marketing & Consulting</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-raleway { font-family: 'Raleway', sans-serif; }
+        .gradient-card {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            transition: all 0.3s ease;
+        }
+        .gradient-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+        }
+        .quiz-option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .quiz-option:hover {
+            border-color: #4ECDC4;
+            background: #f0fdfc;
+        }
+        .quiz-option.selected {
+            border-color: #4ECDC4;
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            color: white;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+        }
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <div class="gradient-card rounded-2xl p-8 mb-8 shadow-lg">
+                <h1 class="font-poppins text-3xl md:text-4xl font-bold text-white mb-4">
+                    ✨ How Healthy Is Your Brand?
+                </h1>
+                <p class="font-raleway text-lg text-white opacity-90">
+                    (A 60-second gut check powered by Poppy)
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-6 shadow-md">
+                <p class="font-raleway text-lg text-gray-700 leading-relaxed">
+                    Think of this as a quick self-care moment — but for your brand. Answer 5 quick questions and find out how your brand is really doing (and how to make it glow).
+                </p>
+            </div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quizContainer" class="space-y-8">
+            
+            <!-- Question 1 -->
+            <div class="question-card bg-white rounded-2xl p-6 shadow-md" data-question="1">
+                <h3 class="font-poppins text-xl font-semibold text-gray-800 mb-6">
+                    Q1: How clearly can you describe what your brand stands for — in under 10 seconds?
+                </h3>
+                <div class="space-y-3">
+                    <div class="quiz-option rounded-lg p-4" data-value="0">
+                        <span class="text-2xl mr-3">🔴</span>
+                        <span class="font-raleway">I fumble every time… it's vibes, not words.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="5">
+                        <span class="text-2xl mr-3">🟡</span>
+                        <span class="font-raleway">I have a general idea but it changes depending on the day.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="10">
+                        <span class="text-2xl mr-3">🟢</span>
+                        <span class="font-raleway">I have a basic pitch, but it could be punchier.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="25">
+                        <span class="text-2xl mr-3">💚</span>
+                        <span class="font-raleway">It's crystal clear — and people repeat it back to me.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card bg-white rounded-2xl p-6 shadow-md" data-question="2">
+                <h3 class="font-poppins text-xl font-semibold text-gray-800 mb-6">
+                    Q2: How consistent is your brand's visual identity (logo, fonts, colors, etc.) across your platforms?
+                </h3>
+                <div class="space-y-3">
+                    <div class="quiz-option rounded-lg p-4" data-value="0">
+                        <span class="text-2xl mr-3">🔴</span>
+                        <span class="font-raleway">It's a hot mess.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="10">
+                        <span class="text-2xl mr-3">🟡</span>
+                        <span class="font-raleway">Mostly consistent, but I wing it a lot.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="25">
+                        <span class="text-2xl mr-3">💚</span>
+                        <span class="font-raleway">Very consistent — I have brand guidelines and stick to them.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card bg-white rounded-2xl p-6 shadow-md" data-question="3">
+                <h3 class="font-poppins text-xl font-semibold text-gray-800 mb-6">
+                    Q3: How active and intentional is your social media presence?
+                </h3>
+                <div class="space-y-3">
+                    <div class="quiz-option rounded-lg p-4" data-value="0">
+                        <span class="text-2xl mr-3">🔴</span>
+                        <span class="font-raleway">I post when I remember or feel guilty.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="10">
+                        <span class="text-2xl mr-3">🟡</span>
+                        <span class="font-raleway">I try to keep it up, but it's not super strategic.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="25">
+                        <span class="text-2xl mr-3">💚</span>
+                        <span class="font-raleway">I post consistently with clear goals in mind.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card bg-white rounded-2xl p-6 shadow-md" data-question="4">
+                <h3 class="font-poppins text-xl font-semibold text-gray-800 mb-6">
+                    Q4: How well do you know what sets your brand apart from your competitors?
+                </h3>
+                <div class="space-y-3">
+                    <div class="quiz-option rounded-lg p-4" data-value="0">
+                        <span class="text-2xl mr-3">🔴</span>
+                        <span class="font-raleway">I don't really — it all feels the same sometimes.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="10">
+                        <span class="text-2xl mr-3">🟡</span>
+                        <span class="font-raleway">I have a few differentiators, but I'm not confident I highlight them.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="25">
+                        <span class="text-2xl mr-3">💚</span>
+                        <span class="font-raleway">I can clearly say what makes us different — and why that matters.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card bg-white rounded-2xl p-6 shadow-md" data-question="5">
+                <h3 class="font-poppins text-xl font-semibold text-gray-800 mb-6">
+                    Q5: How well are your marketing efforts turning into leads or sales?
+                </h3>
+                <div class="space-y-3">
+                    <div class="quiz-option rounded-lg p-4" data-value="0">
+                        <span class="text-2xl mr-3">🔴</span>
+                        <span class="font-raleway">No idea — it's a guessing game.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="10">
+                        <span class="text-2xl mr-3">🟡</span>
+                        <span class="font-raleway">I kinda know, but I don't track it closely.</span>
+                    </div>
+                    <div class="quiz-option rounded-lg p-4" data-value="25">
+                        <span class="text-2xl mr-3">💚</span>
+                        <span class="font-raleway">I use tools to track what's working and adjust accordingly.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="text-center mt-8">
+                <button id="calculateBtn" class="btn-primary text-white font-poppins font-semibold px-8 py-4 rounded-full text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Get My Brand Health Score ✨
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden mt-12">
+            <div class="result-card rounded-2xl p-8 text-center text-white shadow-xl">
+                <h2 class="font-poppins text-3xl font-bold mb-4">Your Brand Health Score</h2>
+                <div class="text-6xl font-bold mb-4" id="scoreDisplay">--</div>
+                <div class="text-2xl mb-6" id="scoreEmoji">🎯</div>
+                <div class="text-xl font-raleway mb-8" id="scoreMessage">Loading your results...</div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="bg-white rounded-2xl p-8 shadow-md mt-8 text-center">
+                <h3 class="font-poppins text-2xl font-bold text-gray-800 mb-4">
+                    Ready to boost your brand health?
+                </h3>
+                <p class="font-raleway text-lg text-gray-700 mb-6">
+                    Your score is just the beginning — let's talk about how we can make your brand feel as good as it looks.
+                </p>
+                <a href="https://www.poppymarketingandconsulting.com/contact" target="_blank" class="btn-primary text-white font-poppins font-semibold px-8 py-4 rounded-full text-lg shadow-lg inline-block">
+                    👉 Pop in for a free consultation
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let answers = {};
+        let totalQuestions = 5;
+
+        // Handle option selection
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionCard = this.closest('.question-card');
+                const questionNum = questionCard.dataset.question;
+                const value = parseInt(this.dataset.value);
+
+                // Remove selected class from all options in this question
+                questionCard.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+
+                // Add selected class to clicked option
+                this.classList.add('selected');
+
+                // Store answer
+                answers[questionNum] = value;
+
+                // Check if all questions are answered
+                checkAllAnswered();
+            });
+        });
+
+        function checkAllAnswered() {
+            const answered = Object.keys(answers).length;
+            const calculateBtn = document.getElementById('calculateBtn');
+            
+            if (answered === totalQuestions) {
+                calculateBtn.disabled = false;
+                calculateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        // Handle calculate button
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            calculateScore();
+        });
+
+        function calculateScore() {
+            const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0);
+            
+            let emoji, message, title;
+            
+            if (totalScore <= 40) {
+                emoji = '😬';
+                title = 'Needs TLC';
+                message = "Hey, we've all been there. Your brand has potential — it just needs some love and structure. Let's clean it up and bring your vision to life.";
+            } else if (totalScore <= 70) {
+                emoji = '🙂';
+                title = 'Almost There';
+                message = "You're on the right track! A few strategic tweaks could take your brand from decent to unforgettable.";
+            } else {
+                emoji = '💃';
+                title = 'Thriving';
+                message = "Your brand is strong and showing up — let's keep the momentum and scale it up with intention.";
+            }
+
+            // Display results
+            document.getElementById('scoreDisplay').textContent = totalScore;
+            document.getElementById('scoreEmoji').textContent = emoji;
+            document.getElementById('scoreMessage').innerHTML = `<strong>${title}</strong><br><br>${message}`;
+
+            // Hide quiz and show results
+            document.getElementById('quizContainer').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            // Smooth scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    </script>
+</body>
+</html>
